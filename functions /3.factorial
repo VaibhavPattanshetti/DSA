@@ -6,8 +6,8 @@ using namespace std;
 int fact(int a){
     int f = 1;
     
-    if(a <= 0){
-        cout<<"Please enter positive limit.";
+    if(a < 0){
+        cout<<"Please enter positive number.";
         return 0;   // "return" is use to terminate fact function
     }
     

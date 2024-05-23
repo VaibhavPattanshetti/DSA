@@ -1,0 +1,41 @@
+// fibonacci series till given limit.
+
+#include <iostream>
+using namespace std;
+
+void fibo(int a){
+    int t0 = 0,t1 = 1,t2;
+    
+    if(a <= 0){
+        cout<<"Please enter positive limit.";
+        return;   // "return" is use to terminate fibo function
+    }
+    else if(a == 1){
+        cout<<t0;
+        return;  // "return" is use to terminate fibo function
+    }
+    else if(a == 2){
+        cout<<t0<<"\t"<<t1;
+        return;    // "return" is use to terminate fibo function
+    }
+    
+    cout<<t0<<"\t"<<t1<<"\t";
+    for(int i=2;i<a;i++){
+        t2 = t0 + t1;
+        t0 = t1;
+        t1 = t2;
+        cout<<t2<<"\t";
+    }
+    
+}
+
+int main() {
+    
+    int limit;
+    cout<<"Enter limit :";
+    cin>>limit;
+    
+    fibo(limit);
+
+    return 0;
+}

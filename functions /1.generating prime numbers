@@ -1,0 +1,28 @@
+// print all prime numbers between given 2 numbers
+
+#include <iostream>
+using namespace std;
+
+bool isprime(int a){
+    for(int i=2;i*i<=a;i++){
+        if(a%i == 0){
+            return false;  //"return false" means terminate isprime function
+        }
+    }
+    return true;
+}
+
+int main() {
+    
+    int a,b;
+    cout<<"Enter limits :";
+    cin>>a>>b;
+    
+    for(int i=a;i<=b;i++){
+        if(isprime(i)){//isprime function will check weather numberis prime or not
+            cout<<i<<"\t";
+        }
+    }
+
+    return 0;
+}

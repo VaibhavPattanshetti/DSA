@@ -1,0 +1,30 @@
+//Hexadecimal To Decimal
+
+#include <iostream>
+using namespace std;
+
+int HexaToDecimal(string hexa){
+  int x = 1,ans = 0;
+  int s = hexa.size();
+  for(int i=s-1;i>=0;i--){
+      if(hexa[i] >= '0' && hexa[i] <= '9'){
+          ans += x*(hexa[i]-'0');
+      }
+      else if(hexa[i] >= 'A' && hexa[i] <= 'F'){
+          ans += x*(hexa[i]-'A' + 10);
+      }
+      x *= 16;
+  }
+  
+  return ans;
+}
+
+int main() {
+    string hexa;
+    cout<<"Enter hexadecimal number :";
+    cin>>hexa;
+    
+    cout<<HexaToDecimal(hexa);
+    
+    return 0;
+}

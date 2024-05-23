@@ -9,7 +9,7 @@ int BinaryToDecimal(int bin){
   while(bin>0){
       ans = ans + x*(bin%10);
       bin = bin/10;
-      x = x*2;
+      x = x*2;   //for octal to decimal x = x*8 
   }
   
   return ans;

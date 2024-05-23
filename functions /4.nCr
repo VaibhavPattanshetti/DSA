@@ -1,0 +1,40 @@
+// nCr.
+
+/*formula ->  ___n!____
+              r! (n-r)!  */
+
+#include <iostream>
+using namespace std;
+
+int fact(int a){
+    int f = 1;
+    
+    for(int i=2;i<=a;i++){
+        f *=  i;
+    }
+    
+    return f;
+}
+
+int main() {
+    
+    int n,r;
+    cout<<"Enter values of n and r :";
+    cin>>n>>r;
+    
+    if(n < 0 || r < 0){
+        cout<<"Please enter positive numbers.";
+        return 0;   // "return" is use to terminate main function
+    }
+    else if(n < r){
+        cout<<"Please note: n should greater than r.";
+        return 0;
+    }
+    
+    int ans = fact(n)/(fact(r)*fact(n-r));
+    
+    cout<<"nCr of given number :"<<ans;
+    
+
+    return 0;
+}

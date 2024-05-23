@@ -1,0 +1,26 @@
+//Binary To Decimal
+
+#include <iostream>
+using namespace std;
+
+int BinaryToDecimal(int bin){
+  int x = 1,ans = 0;
+  
+  while(bin>0){
+      ans = ans + x*(bin%10);
+      bin = bin/10;
+      x = x*2;
+  }
+  
+  return ans;
+}
+
+int main() {
+    int bin;
+    cout<<"Enter binary number :";
+    cin>>bin;
+    
+    cout<<BinaryToDecimal(bin);
+    
+    return 0;
+}

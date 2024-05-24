@@ -1,0 +1,47 @@
+// Decimal to Hexadecimal
+
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+string DeciToHexa(int deci){
+    string ans;
+    int x;
+    
+    while(deci>0){
+        x = deci%16;
+        deci = deci/16;
+        
+        if( x >=0 && x <=9){
+            ans += ('0'+x);
+        }
+        else{
+            ans += ('A' + x - 10);
+        }
+         
+    }
+    
+    reverse(ans.begin(),ans.end()); //#include <algorithm> is required
+    
+    return ans;
+}
+
+int main() {
+    int deci;
+    cout<<"Enter Decimal number :";
+    cin>>deci;
+    
+    if(deci == 0){
+        cout<<"Hexadecimal representation :0";
+        return 0;
+    }
+    else if(deci < 0){
+        cout<<"Please enter positive number.";
+        return 0;
+    }
+    
+    cout<<"Hexadecimal representation :"<<DeciToHexa(deci);
+    
+    return 0;
+}

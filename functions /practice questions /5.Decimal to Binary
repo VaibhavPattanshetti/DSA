@@ -1,0 +1,40 @@
+// Decimal to Binary 
+
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+string DeciToBinary(int deci){
+    string ans;
+    int x;
+    
+    while(deci>0){
+        x = deci%2;      /* for decimal to octal use %8 and /8 */
+        deci = deci/2;
+        ans += ('0'+x);  // ('o' + x) will convert digit to character
+    }
+    
+    reverse(ans.begin(),ans.end()); //#include <algorithm> is required
+    
+    return ans;
+}
+
+int main() {
+    int deci;
+    cout<<"Enter Decimal number :";
+    cin>>deci;
+    
+    if(deci == 0){
+        cout<<"Binary representation :0";
+        return 0;
+    }
+    else if(deci < 0){
+        cout<<"Please enter positive number.";
+        return 0;
+    }
+    
+    cout<<"Binary representation :"<<DeciToBinary(deci);
+    
+    return 0;
+}

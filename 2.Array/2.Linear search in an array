@@ -1,4 +1,5 @@
 // Linear search in an array
+// time complexity  --  O(n)
 
 #include <iostream>
 using namespace std;

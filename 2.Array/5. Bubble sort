@@ -1,4 +1,4 @@
-// Bubble sort
+// Bubble sort or exchange sort
 
 /* In bubble sort,for n size array there will be n-1 passes 
    and in every pass n-1,n-2 n-3 ... iterasions */

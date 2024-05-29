@@ -1,0 +1,48 @@
+// Bubble sort
+
+/* In bubble sort,for n size array there will be n-1 passes 
+   and in every pass n-1,n-2 n-3 ... iterasions */
+   
+// Time complexity  -- O(n^2)  *note-'counter' used is imp for best case
+/* Best-case : O(n)
+  Average-case : O(n^2)
+  Worst-case : O(n^2)  */
+  
+#include <iostream>
+using namespace std;
+int main() {
+    int n,temp;
+    
+    cout<<"Enter size of an array :";
+    cin>>n;
+    int arr[n];
+    
+    cout<<"Enter array elements :";
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    
+    //Bubble sort
+    for(int i=0;i<n-1;i++){  //for n size array n-1 passes
+        
+        bool counter = false;
+        for(int j=0 ;j<n-1-i ;j++){  // imp -- j<n-1-i
+            if(arr[j]>arr[j+1]){
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                counter = true;   //if compiler enters if loop than array is not 
+            }                   // sorted
+        }
+        if(!counter){  //if compiler donot enter if loop than array is already
+            break;      // sorted
+        }
+    }
+    
+    cout<<"Sorted array :";
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    
+    return 0;
+}

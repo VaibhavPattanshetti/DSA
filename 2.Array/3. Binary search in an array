@@ -1,5 +1,9 @@
 // Binary search in an array
+
 //time complexity  -- O(log n)
+/* Best-case : O(1)
+  Average-case : O(log n)
+  Worst-case : O(log n)  */
 
 #include <iostream>
 using namespace std;

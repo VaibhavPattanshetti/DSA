@@ -1,5 +1,9 @@
 // Linear search in an array
+
 // time complexity  --  O(n)
+/* Best-case : O(1)
+  Average-case : O(n)
+  Worst-case : O(n)  */
 
 #include <iostream>
 using namespace std;

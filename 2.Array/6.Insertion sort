@@ -1,0 +1,38 @@
+// Insertion sort
+
+/* Best-case : O(n)
+  Average-case : O(n^2)
+  Worst-case : O(n^2)  */
+
+#include <iostream>
+using namespace std;
+int main() {
+   int n,current,j;
+   
+   cout<<"Enter size of an array :";
+   cin>>n;
+   int arr[n];
+   
+   cout<<"Enter array elemsnts :";
+   for(int i=0;i<n;i++){
+       cin>>arr[i];
+   }
+   
+   for(int i=1;i<n;i++){
+       current = arr[i];
+       j = i - 1;
+       while(arr[j]>current && j>=0){
+           arr[j+1] = arr[j];
+           j--;
+       }
+       
+       arr[j+1] = current;
+   }
+   
+   cout<<"Array elemsnts after sorting :";
+   for(int i=0;i<n;i++){
+       cout<<arr[i];
+   }
+
+    return 0;
+}

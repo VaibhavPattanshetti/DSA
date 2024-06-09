@@ -1,0 +1,38 @@
+// First positive missing number
+//Time complexity -- O(n + N) , since N is const so T.C - O(n)
+
+#include <iostream>
+using namespace std;
+int main() {
+    int n,N=1e6;  // 1e6 -- 10^6
+    bool check[N];
+    
+    for(int i=0;i<N;i++){
+        check[i] = false;
+    }
+    
+    cout<<"Enter size of an array :";
+    cin>>n;
+    int arr[n];
+    
+    cout<<"Enter array elements :";
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    
+    for(int i=0;i<n;i++){
+        if(arr[i]>=0){
+            check[arr[i]] = true;
+        }
+        
+    }
+    
+    for(int i=0;i<N;i++){
+        if(!check[i]){
+            cout<<"Here first positive missing number :"<<i;
+            break;
+        }
+    }
+    
+    return 0;
+}

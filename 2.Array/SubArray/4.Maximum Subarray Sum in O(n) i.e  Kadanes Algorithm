@@ -1,0 +1,38 @@
+// Maximum Subarray Sum using  Kadanes Algorithm
+//Time complexity -- O(n) <- imp
+
+#include <iostream>
+#include <climits>
+using namespace std;
+
+int MaxSum(int arr[],int size){
+    int sum = 0;
+    int MaxSum = INT_MIN;
+    
+    for(int i=0;i<size;i++){
+        sum += arr[i];
+        if(sum<0){
+            sum = 0;
+        }
+        MaxSum = max(MaxSum,sum);
+    }
+    return MaxSum;
+}
+
+int main() {
+    int n;
+    
+    cout<<"Enter size of an array :";
+    cin>>n;
+    int arr[n];
+    
+    cout<<"Enter array elements :";
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    
+    int ans = MaxSum(arr,n);
+    cout<<"Maximum Subarray Sum :"<<ans;
+
+    return 0;
+}

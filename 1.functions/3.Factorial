@@ -1,0 +1,34 @@
+//factorial of given number.
+
+#include <iostream>
+using namespace std;
+
+int fact(int a){
+    int f = 1;
+    
+    if(a < 0){
+        cout<<"Please enter positive number.";
+        return 0;   // "return" is use to terminate fact function
+    }
+    
+    for(int i=2;i<=a;i++){
+        f *=  i;
+    }
+    
+    return f;
+}
+
+int main() {
+    
+    int a;
+    cout<<"Enter number :";
+    cin>>a;
+    
+    int ans = fact(a);
+    
+    if(ans != 0){   //id ans is "0" that means given number is nonpositive
+    cout<<"Factorial of given number :"<<ans;
+    }
+
+    return 0;
+}

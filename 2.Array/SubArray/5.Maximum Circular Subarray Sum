@@ -1,0 +1,49 @@
+// Maximum Circular Subarray Sum
+//Time conplexity -- O(n)
+//*note -- if subarray of array is in liner than nonwrapsum will max if 
+//         subarray of array is in circular form than wrapsum will max
+
+#include <iostream>
+using namespace std;
+
+int kadane(int arr[],int n){
+    int sum=0,maxsum=0;
+    for(int i=0;i<n;i++){
+        sum += arr[i];
+        if(sum<0){
+            sum=0;
+        }
+        maxsum = max(maxsum,sum);
+    }
+    return maxsum;
+}
+
+int main() {
+    int n;
+    
+    cout<<"Enter size of an array :";
+    cin>>n;
+    int arr[n];
+    
+    cout<<"Enter array elements :";
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    
+    int wrapsum,nonwrapsum;
+    nonwrapsum = kadane(arr,n);  //nonwrapsum will max for case 1(i.e-N.B)
+    
+    int totalSum = 0;
+    for(int i=0;i<n;i++){
+        totalSum += arr[i];
+        arr[i] = -arr[i];
+    }
+    
+    int nonContributing = kadane(arr,n);
+    
+    wrapsum = totalSum + nonContributing; //wrapsum will max for case 2(N.B)
+    
+    cout<<"Maximum Subarray Sum :"<<max(wrapsum,nonwrapsum); //print max,so it
+                                                        //will work for both cases 
+    return 0;
+}

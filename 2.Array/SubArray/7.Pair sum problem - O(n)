@@ -1,0 +1,35 @@
+//   pair sum problem - O(n)
+//*note -- only for sorted array
+//find a pair such that sum of pairs is equal to given number
+
+#include <iostream>
+using namespace std;
+
+bool pairsum(int arr[],int n,int k){
+    
+    int low=0,high=n-1;
+    
+    while(low<high){
+        if((arr[low]+arr[high])==k){
+            cout<<"index of pairs :"<<low<<" "<<high;
+            return true;
+        }
+        else if((arr[low]+arr[high])<k){
+            low++;
+        }
+        else if((arr[low]+arr[high])>k){
+            high--;
+        }
+    }
+    
+    return false;
+}
+
+int main() {
+    int arr[] = {2,4,7,11,14,16, 20,21}; //pais are 11 and 20
+    int k=31;
+    
+    pairsum(arr,8,k);
+    
+    return 0;
+}

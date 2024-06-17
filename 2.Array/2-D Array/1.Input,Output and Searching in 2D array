@@ -1,0 +1,50 @@
+// Input,Output and Searching in 2D array
+//2D array is like matrix,just imagine matrix while working in 2D array.
+
+#include <iostream>
+using namespace std;
+int main() {
+    int n,m;
+    
+    cout<<"Enter dimensions of 2D-array :";
+    cin>>n>>m;
+    int arr[n][m];
+    
+    //Input
+    cout<<"Enter array elements :\n";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>arr[i][j];
+        }
+    }
+    
+    //Output
+    cout<<"Given 2D-array :\n";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+    
+    int x;
+    bool flag = false;
+    cout<<"Enter element to search in matrix :";
+    cin>>x;
+    
+    //Searching
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(arr[i][j]==x){
+                flag = true;
+                cout<<"Element found at index "<<i<<","<<j;
+            }
+        }
+    }
+    
+    if(!flag){
+        cout<<"Element not found.";
+    }
+
+    return 0;
+}

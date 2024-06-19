@@ -1,0 +1,50 @@
+// Matrix Multiplication <- imp
+//*NOTE -- no. of columbs of m1 and no. of rows of m2 should be same.
+
+#include <iostream>
+using namespace std;
+int main() {
+    int n1,n2,n3;
+    
+    cin>>n1>>n2>>n3;
+    int m1[n1][n2],m2[n2][n3],mul[n1][n3];
+    
+    cout<<"Enter 1st array elements :\n";
+    for(int i=0;i<n1;i++){
+        for(int j=0;j<n2;j++){
+            cin>>m1[i][j];
+        }
+    }
+    
+    cout<<"Enter 2nd array elements :\n";
+    for(int i=0;i<n2;i++){
+        for(int j=0;j<n3;j++){
+            cin>>m2[i][j];
+        }
+    }
+    
+    for(int i=0;i<n1;i++){
+        for(int j=0;j<n3;j++){
+            mul[i][j] = 0;
+        }
+    }
+    
+    //Multiplying 
+    for(int i=0;i<n1;i++){
+        for(int j=0;j<n3;j++){
+            for(int k=0;k<n2;k++){
+               mul[i][j] += m1[i][k]*m2[k][j]; 
+            }
+        }
+    }
+    
+    cout<<"Multiplication matrix of given matrices :\n";
+    for(int i=0;i<n1;i++){
+        for(int j=0;j<n3;j++){
+            cout<<mul[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+
+    return 0;
+}

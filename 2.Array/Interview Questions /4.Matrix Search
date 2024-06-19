@@ -1,0 +1,46 @@
+// Matrix Search
+/* Time complexity -- Best Case: O(1)
+                      Average Case: O(n + m)
+                      Worst Case: O(n + m)   */
+
+#include <iostream>
+using namespace std;
+int main() {
+    int n,m;
+    int target;
+    
+    cout<<"Enter dimensions of 2D-array :";
+    cin>>n>>m;
+    int arr[n][m];
+    cout<<"Enter element to search :";
+    cin>>target;
+    
+    //Input
+    cout<<"Enter array elements :\n";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>arr[i][j];
+        }
+    }
+    
+    int r=0,c=m-1;
+    bool flag=false;
+    while(c>=0 && r<n){
+        if(arr[r][c] == target){
+            cout<<"Element found at index "<<r<<","<<c;
+            flag = true;
+            break;
+        }
+        else if(arr[r][c] < target){
+            r++;
+        }
+        else{
+            c--;
+        }
+    }
+    if(!flag){
+        cout<<"Element does not exist.";
+    }
+
+    return 0;
+}

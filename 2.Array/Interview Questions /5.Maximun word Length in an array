@@ -1,0 +1,35 @@
+// Maximun word Length in an array
+//*NOTE -- arr size is n+1 because after charecters '\0' requre 1 spacce to store.
+
+#include <iostream>
+#include <climits>
+using namespace std;
+int main() {
+    int n;
+    
+    cout<<"Enter size of array :";
+    cin>>n;
+    cin.ignore();  //*imp -- after taking "n" from user 'enter' will click by user
+    char arr[n+1];  // and that enter will store in arr since getline takes input
+                    //till enter so compiler will not take input from user
+    cout<<"Enter character array :";
+    cin.getline(arr,n+1);
+    
+    int count = 0,i=0;
+    int maxlen = INT_MIN;
+    
+    while(arr[i]!='\0'){
+        if(arr[i]!=' '){
+            count++;
+            maxlen = max(maxlen,count);
+        }
+        else{
+            count = 0;
+        }
+        i++;
+    }
+    
+    cout<<maxlen;
+    
+    return 0;
+}

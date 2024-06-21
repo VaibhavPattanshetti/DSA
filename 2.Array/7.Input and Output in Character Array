@@ -1,0 +1,21 @@
+// Character Array
+//*NOTE -- character array ends with '\0'
+
+#include <iostream>
+using namespace std;
+int main() {
+    
+    //Input
+    char arr[100] = {'v','a','i','b','h','a','v'};
+    char arr[100] = "vaibhav";
+    char arr[100];
+    cin>>arr;
+    
+    //Output
+    cout<<arr<<"\n"; //print till '\0' occures
+    for(int i=0;arr[i]!='\0';i++){
+        cout<<arr[i]<<"\n";
+    }
+
+    return 0;
+}

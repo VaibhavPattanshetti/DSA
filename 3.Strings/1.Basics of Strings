@@ -1,0 +1,44 @@
+// Strings in C++
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+int main() {
+    //INPUT OUTPUT
+    //TYPE -- 1
+    /*string name = "vaibhav pattanshetti";
+    cout<<name;*/       //vaibhav pattanshetti
+    
+    //TYPE -- 2
+    /*string name;
+    cin>>name;      //vaibhav pattanshetti
+    cout<<name;*/   //vaibhav
+    
+    //TYPE -- 3
+    /*string name;
+    getline(cin,name);   //vaibhav pattanshetti
+    cout<<name;*/        //vaibhav pattanshetti
+    
+    //FUNCTIONS
+    //TYPE -- 1
+    /*string name = "vaibhav";
+    cout<<name.size();*/          // 7
+    
+    //TYPE -- 2
+    /*string num = "123";
+    int x = stoi(num);       //string to integer
+    cout<<(x+2);*/          //125
+    
+    //TYPE -- 3
+    /*int x = 123;
+    string num = to_string(x);
+    cout<<num;*/            //123
+    
+    //TYPE -- 4
+    /*string name = "vaibhav";
+    sort(name.begin(),name.end());   //requre <algorithm>
+    cout<<name;*/                   //aabhivv
+    
+    return 0;
+}

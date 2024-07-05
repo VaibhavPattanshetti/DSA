@@ -1,0 +1,25 @@
+// Transform Function
+/*NOTE -- 1st and 2nd argument provide whole string to function
+            3rd argument tells from where operation to be perform
+            4th argument is operation to be performed */
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main() {
+    string str = "Vaibhav";
+    
+    transform(str.begin(),str.end(),str.begin(),::toupper);
+    cout<<str<<endl;
+   
+   transform(str.begin(),str.end(),str.begin(),::tolower);
+   cout<<str<<endl;
+   
+   transform(str.begin(),str.end(),str.begin(),[](char x){return 'v';});
+   cout<<str<<endl;
+   /*[] -- funtion name
+   (char x) -- argument
+   {return 'v';} -- function body*/  // this is operation to perform
+
+    return 0;
+}

@@ -1,0 +1,16 @@
+// Biggest Number from numeric string
+//e.g -- string = "43521"
+//print -- 54321
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+int main() {
+    string num = "6371";
+    sort(num.begin(),num.end());
+    reverse(num.begin(),num.end());
+    cout<<num;
+    
+    return 0;
+}

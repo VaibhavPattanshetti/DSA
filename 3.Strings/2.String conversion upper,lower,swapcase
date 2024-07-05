@@ -1,0 +1,40 @@
+// String conversion upper,lower,swapcase
+//*NOTE -- 'a' is greater 'A' by 32
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string str = "Vaibhav";
+    
+    //Convert to Upper case
+    for(int i=0;i<str.size();i++){
+        if(str[i]>='a' && str[i]<='z'){
+            str[i] -= 32;
+        }
+    }
+    cout<<str<<endl;      //VAIBHAV
+    
+    //Convert to lower case
+    for(int i=0;i<str.size();i++){
+        if(str[i]>='A' && str[i]<='Z'){
+            str[i] += 32;
+        }
+    }
+    cout<<str<<endl;      //vaibhav
+    
+    //Convert Upper to lower and vise versa
+    str = "Vaibhav";
+    for(int i=0;i<str.size();i++){
+        if(str[i]>='a' && str[i]<='z'){
+            str[i] -= 32;
+        }
+        else if(str[i]>='A' && str[i]<='Z'){
+            str[i] += 32;
+        }
+    }
+    cout<<str<<endl;      //vAIBHAV
+    
+
+    return 0;
+}

@@ -1,4 +1,5 @@
 // Check weather Given No. is Power of 2 or not
+//Explaination in notebook
 
 #include <iostream>
 using namespace std;

@@ -1,0 +1,36 @@
+// Get Set Clear and Update Bits 
+
+#include <iostream>
+using namespace std;
+
+int GetBit(int n,int posi){
+    return ((n & (1<<posi))!=0);
+}
+
+int SetBit(int n,int posi){
+    n = (n | (1<<posi));
+    return n;
+}
+
+int ClearBit(int n,int posi){
+    int mask = ~(1<<posi);
+    n = n & mask;
+    return n;
+}
+
+int UpdateBit(int n,int posi,int value){
+    int mask = ~(1<<posi);
+    n = n & mask;
+    n = n | (value<<posi);
+    return n;
+}
+
+int main() {
+    
+    cout<<GetBit(5,2)<<endl;
+    cout<<SetBit(5,3)<<endl;
+    cout<<ClearBit(5,0)<<endl;
+    cout<<UpdateBit(5,3,1)<<endl;
+
+    return 0;
+}

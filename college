@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+
+struct  DataBase
+{
+    int Roll;
+    string name;
+    float sgpa;
+};
+
+class abc{
+    
+    struct DataBase s[10];
+
+    public:
+
+    void readData(int n){
+        cout<<"Enter Your Data\n";
+        cin>>s[n].name>>s[n].Roll>>s[n].sgpa;
+    };
+
+    void displayData(int n){
+        cout<<"Name: "<<s[n].name<<"\nRoll: "<<s[n].Roll<<"\nSGPA: "<<s[n].sgpa<<"\n";
+    };
+
+};
+
+
+int main(){
+
+    abc obj;
+    int choice,temp=0;
+    bool check=true;
+
+    cout<<"1. Read Data\n2. Display Data\n3.Exit\n";
+    
+    while(check){
+        cout<<"Enter choice\n";
+        cin>>choice;
+        switch(choice){
+            case 1:
+                obj.readData(temp);
+                cout<<"Id assigned:"<<temp<<endl;
+                temp++;
+                break;
+            case 2:
+                int r;
+                cout<<"enter id:";
+                cin>>r;
+                obj.displayData(r);
+                break;
+            case 3:
+                check=false;
+                break;
+            default:
+                "invalid choice";
+                break;
+        }
+    }
+
+    cout<<"Exiting...";
+
+    return 0;
+}

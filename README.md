@@ -26,7 +26,8 @@ Repository Structure🗂️
 
 The repository is organized as follows:
 
-<p>DSA-Made-Easy/
+```
+DSA-Made-Easy/
 |
 |-- Basic-DSA/
 |   |-- Arrays/
@@ -35,6 +36,7 @@ The repository is organized as follows:
 |   |-- Recursion/
 |   |-- Searching-and-Sorting/
 |   |-- Trees/
+|   |-- Hash-Tables/
 |
 |-- Advanced-DSA/
 |   |-- Graphs/
@@ -44,7 +46,8 @@ The repository is organized as follows:
 |   |-- Bit-Manipulation/
 |   |-- Advanced-Sorting-Algorithms/
 |
-|-- README.md</p>
+|-- README.md
+```
 
 Basic DSA Topics🐾
 

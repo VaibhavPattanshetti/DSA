@@ -1,3 +1,5 @@
+ <h1 align="center">Hi 👋, I'm Vaibhav Pattanshetti</h1>
+ 
 Data Structures and Algorithms (DSA) Made Easy
 
 Welcome to the DSA Made Easy repository! This repository is designed to help learners understand and master Data Structures and Algorithms (DSA) in a simplified and structured way. Whether you're a beginner starting your journey or an advanced programmer looking to refine your skills, this repository has something for you.

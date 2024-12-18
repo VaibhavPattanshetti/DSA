@@ -1,6 +1,6 @@
  <h1 align="center">Hi 👋, I'm Vaibhav Pattanshetti</h1>
  
-###Data Structures and Algorithms (DSA) Made Easy🚀
+Data Structures and Algorithms (DSA) Made Easy🚀
 
 Welcome to the DSA Made Easy repository! This repository is designed to help learners understand and master Data Structures and Algorithms (DSA) in a simplified and structured way. Whether you're a beginner starting your journey or an advanced programmer looking to refine your skills, this repository has something for you.🎓
 
@@ -15,11 +15,11 @@ Advanced DSA 🚀: Covers more complex and performance-intensive algorithms for 
 
 Each topic includes:
 
-Easy-to-understand explanations✍️
+- Easy-to-understand explanations✍️
 
-Step-by-step code implementations💻
+- Step-by-step code implementations💻
 
-Visual aids and diagrams📊
+- Visual aids and diagrams📊
 
 
 Repository Structure🗂️

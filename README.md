@@ -26,7 +26,7 @@ Repository Structure🗂️
 
 The repository is organized as follows:
 
-DSA-Made-Easy/
+<p>DSA-Made-Easy/
 |
 |-- Basic-DSA/
 |   |-- Arrays/
@@ -44,7 +44,7 @@ DSA-Made-Easy/
 |   |-- Bit-Manipulation/
 |   |-- Advanced-Sorting-Algorithms/
 |
-|-- README.md
+|-- README.md</p>
 
 Basic DSA Topics🐾
 
@@ -82,3 +82,4 @@ Feedback🗨️
 Your feedback is valuable! If you have suggestions, questions, or want to report an issue, feel free to open an issue in the repository or reach out directly.
 
 Let's make DSA learning easy and fun together!🌟
+

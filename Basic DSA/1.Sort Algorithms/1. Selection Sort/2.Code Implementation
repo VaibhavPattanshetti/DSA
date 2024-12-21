@@ -1,0 +1,56 @@
+// Selection Sort
+
+/* Time Complexity -> O(n²)
+   Space Complexity -> O(1)
+*/
+
+#include <iostream>  // Include the necessary header for input/output
+using namespace std;
+
+// Function to swap two elements using a temporary variable
+void Swap(int& a, int& b) {
+    int temp = a;  // Store the value of a in temp
+    a = b;         // Assign the value of b to a
+    b = temp;      // Assign the value of temp (old a) to b
+}
+
+// Function to perform the Selection Sort algorithm
+void SelectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {  // Outer loop: Traverse through all elements of the array
+        int min_idx = i;                // Assume the current index as the minimum
+        for (int j = i + 1; j < n; j++) {  // Inner loop: Compare with the remaining unsorted elements
+            if (arr[min_idx] > arr[j]) {  // If the element at j is smaller than the current minimum
+                min_idx = j;              // Update the minimum index
+            }
+        }
+        // After finding the smallest element, swap it with the current element at i
+        Swap(arr[i], arr[min_idx]);
+    }
+}
+
+int main() {
+    int n;  // Declare the variable to store the size of the array
+    cout << "Enter size of an array :";  // Prompt the user for the array size
+    cin >> n;  // Take the input for the size of the array
+    
+    int arr[n];  // Declare an array of size n
+    cout << "\nEnter array elements  :";  // Prompt the user to enter the elements
+    for (int i = 0; i < n; i++) {  // Loop to read the array elements
+        cin >> arr[i];  // Take input for each element of the array
+    }
+    
+    cout << "\nOriginal array :";  // Print the original array
+    for (int i = 0; i < n; i++) {  // Loop to print the array elements
+        cout << arr[i] << " ";  // Print each element of the array
+    }
+    
+    // Call the SelectionSort function to sort the array
+    SelectionSort(arr, n);
+    
+    cout << "\nSorted array :";  // Print the sorted array
+    for (int i = 0; i < n; i++) {  // Loop to print the sorted array elements
+        cout << arr[i] << " ";  // Print each sorted element
+    }
+
+    return 0;  // Return 0 to indicate successful program execution
+}

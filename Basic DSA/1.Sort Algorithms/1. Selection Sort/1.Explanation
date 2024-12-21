@@ -1,1 +1,67 @@
+Selection Sort is a simple comparison-based sorting algorithm. Here's how it works, step-by-step, in an easy-to-understand way:
 
+1. What does Selection Sort do?
+The main idea behind Selection Sort is to repeatedly find the smallest (or largest) element in the unsorted part of the array and place it at the correct position (sorted part).
+
+2. How does it work?
+Let's break it down with an example:
+
+Consider the array:
+[64, 25, 12, 22, 11]
+
+Step-by-step Process:
+Start with the entire array.
+
+Initially, the entire array is unsorted.
+Find the smallest element in the array.
+
+Start by assuming that the first element (64) is the smallest.
+Compare it with each of the other elements.
+64 vs 25 → 25 is smaller, so 25 becomes the new smallest.
+25 vs 12 → 12 is smaller, so 12 becomes the new smallest.
+12 vs 22 → 12 is still smaller.
+12 vs 11 → 11 is smaller, so 11 is now the smallest.
+Swap the smallest element (11) with the first element (64).
+
+Now the array looks like this:
+[11, 25, 12, 22, 64]
+Repeat for the rest of the array.
+
+Now, ignore the first element (since it's in the right place) and focus on the remaining unsorted part:
+[25, 12, 22, 64]
+Find the smallest element in this part:
+25 vs 12 → 12 is smaller.
+12 vs 22 → 12 is still smaller.
+12 vs 64 → 12 is still smaller.
+Swap 12 with 25, so the array becomes:
+[11, 12, 25, 22, 64]
+Repeat the process for the next unsorted part:
+
+Now focus on the unsorted part:
+[25, 22, 64]
+The smallest element is 22.
+Swap 22 with 25:
+[11, 12, 22, 25, 64]
+Finally, the last two elements (25 and 64) are already in the correct order, so no swap is needed.
+
+Result:
+After all the steps, the array is sorted:
+[11, 12, 22, 25, 64]
+
+Key Points:
+Selection Sort works by finding the smallest element in the unsorted part and moving it to the correct position in the sorted part.
+The algorithm does this in n-1 passes through the array, where n is the size of the array.
+Time Complexity: Each pass requires comparing all the remaining unsorted elements, making the algorithm run in O(n²) time.
+Space Complexity: Since it sorts the array in place and uses only a small amount of extra space for swapping, its space complexity is O(1).
+
+Visualizing the Process:
+Let’s visualize the selection sort process with this simple example:
+
+Start with: [64, 25, 12, 22, 11]
+Find smallest (11) → Swap with 64 → [11, 25, 12, 22, 64]
+Now: [25, 12, 22, 64]
+Find smallest (12) → Swap with 25 → [11, 12, 25, 22, 64]
+Now: [25, 22, 64]
+Find smallest (22) → Swap with 25 → [11, 12, 22, 25, 64]
+Now: [25, 64]
+No need to swap, as they are already in order.

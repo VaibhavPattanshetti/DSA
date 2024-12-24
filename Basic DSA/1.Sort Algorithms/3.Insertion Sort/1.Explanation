@@ -1,0 +1,54 @@
+Explanation:
+
+1.Start with the second element:
+•Assume the first element is already sorted.
+•Take the second element and compare it with the elements in the sorted part.
+
+2.Shift and Insert:
+•If the current element is smaller than the sorted elements, move the larger elements one position to the right to make space.
+•Insert the current element into its correct position.
+
+3.Repeat for all elements:
+•Move to the next element and repeat the process until the entire array is sorted.
+
+•Example:
+Unsorted Array:
+[5, 3, 8, 6, 2]
+
+Step-by-Step Process:
+
+1.Start with the second element (3):
+•Compare 3 with 5.
+•Since 3 < 5, shift 5 to the right and insert 3.
+Array after Step 1:
+[3, 5, 8, 6, 2]
+
+2.Move to the next element (8):
+•Compare 8 with 5.
+•Since 8 > 5, leave it as is (no shifting needed).
+Array after Step 2:
+[3, 5, 8, 6, 2]
+
+3.Move to the next element (6):
+•Compare 6 with 8.
+•Since 6 < 8, shift 8 to the right.
+•Compare 6 with 5.
+•Since 6 > 5, insert 6 after 5.
+Array after Step 3:
+[3, 5, 6, 8, 2]
+
+4.Move to the last element (2):
+•Compare 2 with 8, 6, 5, and 3.
+•Since 2 < all of them, shift them all to the right and place 2 at the beginning.
+Array after Step 4:
+[2, 3, 5, 6, 8]
+
+Final Sorted Array:
+[2, 3, 5, 6, 8]
+
+Key Points:
+•Best Case: If the array is already sorted, it just checks each element once.
+Time Complexity: 𝑂(𝑛)
+•Worst Case: If the array is reverse sorted, each element needs to shift all previous elements.
+Time Complexity: 𝑂(𝑛2)
+•Space Complexity: 𝑂(1), as it sorts the array in place without extra memory.

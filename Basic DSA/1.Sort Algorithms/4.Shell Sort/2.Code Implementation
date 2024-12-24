@@ -1,0 +1,61 @@
+// Shell Sort
+
+/* Time Complexity -> 
+                    Best Case - O(nlogn)
+                    Worst Case - O(n2)
+   Space Complexity -> O(1)
+*/
+#include <iostream>
+using namespace std;
+
+// ShellSort function to sort the array
+void ShellSort(int arr[], int n){
+    // Outer loop for gap sequence, starting from n/2 and reducing the gap
+    for(int gap = n / 2; gap > 0; gap = gap / 2){  
+        // Inner loop for the insertion sort-like operation with the current gap
+        for(int i = gap; i < n; i++){     
+            int x = arr[i];  // Element to be inserted
+            int j = i - gap;  // Position to compare and shift elements
+
+            // Shifting elements that are greater than 'x' to the right
+            while(j >= 0 && x < arr[j]){
+                arr[j + gap] = arr[j];  // Shift element to the right
+                j = j - gap;  // Move to the next element on the left by 'gap' distance
+            }
+
+            // Insert the current element 'x' in the correct position
+            arr[j + gap] = x;  
+        }
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter size of array : ";  
+    cin >> n;  // Take the size of the array as input
+
+    int arr[n];  // Declare an array of size 'n'
+    
+    cout << "\nEnter array elements : ";  
+    // Loop to input the elements of the array
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];  // Taking array elements as input
+    }
+    
+    // Printing the original array
+    cout << "\nOriginal array : ";  
+    for(int i = 0; i < n; i++){
+        cout << arr[i] << " ";  // Print each element in the original array
+    }
+    
+    // Call ShellSort function to sort the array
+    ShellSort(arr, n);
+    
+    // Printing the sorted array
+    cout << "\nSort array : ";  
+    for(int i = 0; i < n; i++){
+        cout << arr[i] << " ";  // Print each element in the sorted array
+    }
+
+    return 0;
+}

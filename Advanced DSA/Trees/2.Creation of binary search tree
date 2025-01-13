@@ -1,0 +1,10 @@
+// Insert function for a Binary Search Tree (BST)
+void insert(Node*& root, int data) {
+    if (root == nullptr) {
+        root = new Node(data);  // Create a new node if the root is null
+    } else if (data < root->data) {
+        insert(root->left, data);  // Insert in the left subtree if data is smaller
+    } else {
+        insert(root->right, data); // Insert in the right subtree if data is greater
+    }
+}

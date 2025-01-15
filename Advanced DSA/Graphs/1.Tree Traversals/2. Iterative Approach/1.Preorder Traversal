@@ -1,0 +1,55 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+class TreeNode{
+    public:
+    TreeNode *left;
+    TreeNode *right;
+    int value;
+    TreeNode(int data){
+        left = right = nullptr;
+        value = data;
+    }
+};
+
+void Preorder(TreeNode *root){
+    if(root==nullptr){
+        return;
+    }
+    
+    stack<TreeNode*> st;
+    st.push(root);
+    
+    while(!st.empty()){
+        TreeNode *current = st.top();
+        st.pop();
+        
+        cout<<current->value<<" ";
+        if(current->right){
+            st.push(current->right);
+        }
+        if(current->left){
+            st.push(current->left);
+        }
+        
+    }
+    
+}
+
+
+int main() {
+    
+    TreeNode *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    
+   
+    cout<<"\nPreorder Traversal :";
+    Preorder(root);
+   
+
+    return 0;
+}

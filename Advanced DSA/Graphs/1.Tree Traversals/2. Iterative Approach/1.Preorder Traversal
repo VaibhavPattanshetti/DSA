@@ -1,55 +1,57 @@
 #include <iostream>
-#include <stack>
+#include <stack> // Required for using the stack data structure
 using namespace std;
 
-class TreeNode{
+// Definition of the TreeNode class to represent each node in a binary tree
+class TreeNode {
     public:
-    TreeNode *left;
-    TreeNode *right;
-    int value;
-    TreeNode(int data){
-        left = right = nullptr;
-        value = data;
+    TreeNode *left;  // Pointer to the left child
+    TreeNode *right; // Pointer to the right child
+    int value;       // Value stored in the node
+
+    // Constructor to initialize the TreeNode
+    TreeNode(int data) {
+        left = right = nullptr; // Set left and right child pointers to null
+        value = data;           // Assign the value to the node
     }
 };
 
-void Preorder(TreeNode *root){
-    if(root==nullptr){
+// Function to perform iterative preorder traversal (Root -> Left -> Right)
+void Preorder(TreeNode *root) {
+    if (root == nullptr) { // If the tree is empty, return immediately
         return;
     }
-    
-    stack<TreeNode*> st;
-    st.push(root);
-    
-    while(!st.empty()){
-        TreeNode *current = st.top();
-        st.pop();
+
+    stack<TreeNode*> st; // Create a stack to store tree nodes
+    st.push(root);       // Push the root node onto the stack
+
+    while (!st.empty()) { // Loop until the stack becomes empty
+        TreeNode *current = st.top(); // Get the node at the top of the stack
+        st.pop();                     // Remove the node from the stack
         
-        cout<<current->value<<" ";
-        if(current->right){
+        cout << current->value << " "; // Process the current node (print its value)
+
+        // Push the right child first so that the left child is processed first
+        if (current->right) {
             st.push(current->right);
         }
-        if(current->left){
+        if (current->left) {
             st.push(current->left);
         }
-        
     }
-    
 }
 
-
 int main() {
-    
-    TreeNode *root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    
-   
-    cout<<"\nPreorder Traversal :";
-    Preorder(root);
-   
+    // Constructing the binary tree
+    TreeNode *root = new TreeNode(1);           // Root node with value 1
+    root->left = new TreeNode(2);               // Left child of root with value 2
+    root->right = new TreeNode(3);              // Right child of root with value 3
+    root->left->left = new TreeNode(4);         // Left child of node 2 with value 4
+    root->left->right = new TreeNode(5);        // Right child of node 2 with value 5
 
-    return 0;
+    // Performing and displaying the preorder traversal
+    cout << "\nPreorder Traversal :";
+    Preorder(root);
+
+    return 0; // Exit the program
 }

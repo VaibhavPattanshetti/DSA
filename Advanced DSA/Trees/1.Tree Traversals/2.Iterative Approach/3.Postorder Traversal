@@ -1,0 +1,71 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+// Definition of the TreeNode class to represent each node in a binary tree
+class TreeNode {
+    public:
+    TreeNode *left;  // Pointer to the left child
+    TreeNode *right; // Pointer to the right child
+    int value;       // Value stored in the node
+
+    // Constructor to initialize the TreeNode
+    TreeNode(int data) {
+        left = right = nullptr; // Initialize left and right child pointers to null
+        value = data;           // Assign the given value to the node
+    }
+};
+
+// Function to perform an iterative postorder traversal of a binary tree
+void Postorder(TreeNode* root){
+    // If the tree is empty, return immediately
+    if(root == nullptr){
+        return;
+    }
+    
+    // Two stacks are used to simulate the recursive postorder traversal
+    stack<TreeNode*> s1, s2;
+    
+    // Push the root node onto the first stack
+    s1.push(root);
+    
+    // Process nodes in the first stack
+    while(!s1.empty()){
+        // Retrieve and remove the top node from s1
+        TreeNode* current = s1.top();
+        s1.pop();
+        
+        // Push the current node onto the second stack
+        s2.push(current);
+        
+        // Push the left child of the current node onto s1 (if it exists)
+        if(current->left){
+            s1.push(current->left);
+        }
+        
+        // Push the right child of the current node onto s1 (if it exists)
+        if(current->right){
+            s1.push(current->right);
+        }
+    }
+    
+    // Nodes are now in reverse postorder in s2, print them in order
+    while(!s2.empty()){
+        cout << s2.top()->value << " "; // Print the value of the top node in s2
+        s2.pop();                       // Remove the top node from s2
+    }
+}
+
+int main() {
+    // Constructing the binary tree
+    TreeNode *root = new TreeNode(1);       // Root node with value 1
+    root->left = new TreeNode(2);           // Left child of root with value 2
+    root->right = new TreeNode(3);          // Right child of root with value 3
+    root->left->left = new TreeNode(4);     // Left child of node 2 with value 4
+    root->left->right = new TreeNode(5);    // Right child of node 2 with value 5
+    
+    // Perform iterative postorder traversal and print the node values
+    Postorder(root);
+
+    return 0; // Exit the program
+}

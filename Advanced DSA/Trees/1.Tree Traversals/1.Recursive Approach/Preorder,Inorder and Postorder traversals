@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+// Definition of the TreeNode class to represent each node in a binary tree
+class TreeNode {
+    public:
+    TreeNode *left;  // Pointer to the left child
+    TreeNode *right; // Pointer to the right child
+    int value;       // Value stored in the node
+
+    // Constructor to initialize the TreeNode
+    TreeNode(int data) {
+        left = right = nullptr; // Set left and right child pointers to null
+        value = data;           // Assign the value to the node
+    }
+};
+
+// Function to perform postorder traversal (Left -> Right -> Root)
+void Postorder(TreeNode *root) {
+    if (root == nullptr) { // Base case: if the current node is null, return
+        return;
+    }
+
+    Postorder(root->left);   // Recursively traverse the left subtree
+    Postorder(root->right);  // Recursively traverse the right subtree
+    cout << root->value << " "; // Process the current node (print its value)
+}
+
+// Function to perform preorder traversal (Root -> Left -> Right)
+void Preorder(TreeNode *root) {
+    if (root == nullptr) { // Base case: if the current node is null, return
+        return;
+    }
+
+    cout << root->value << " "; // Process the current node (print its value)
+    Preorder(root->left);       // Recursively traverse the left subtree
+    Preorder(root->right);      // Recursively traverse the right subtree
+}
+
+// Function to perform inorder traversal (Left -> Root -> Right)
+void Inorder(TreeNode *root) {
+    if (root == nullptr) { // Base case: if the current node is null, return
+        return;
+    }
+
+    Inorder(root->left);       // Recursively traverse the left subtree
+    cout << root->value << " "; // Process the current node (print its value)
+    Inorder(root->right);      // Recursively traverse the right subtree
+}
+
+int main() {
+    // Constructing the binary tree
+    TreeNode *root = new TreeNode(1);           // Root node with value 1
+    root->left = new TreeNode(2);               // Left child of root with value 2
+    root->right = new TreeNode(3);              // Right child of root with value 3
+    root->left->left = new TreeNode(4);         // Left child of node 2 with value 4
+    root->left->right = new TreeNode(5);        // Right child of node 2 with value 5
+
+    // Performing and displaying the postorder traversal
+    cout << "\nPostorder Traversal :";
+    Postorder(root);
+
+    // Performing and displaying the preorder traversal
+    cout << "\nPreorder Traversal :";
+    Preorder(root);
+
+    // Performing and displaying the inorder traversal
+    cout << "\nInorder Traversal :";
+    Inorder(root);
+
+    return 0; // Exit the program
+}

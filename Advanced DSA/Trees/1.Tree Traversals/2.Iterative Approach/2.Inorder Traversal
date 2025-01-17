@@ -1,0 +1,56 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+// Definition of the TreeNode class to represent each node in a binary tree
+class TreeNode {
+    public:
+    TreeNode *left;  // Pointer to the left child
+    TreeNode *right; // Pointer to the right child
+    int value;       // Value stored in the node
+
+    // Constructor to initialize the TreeNode
+    TreeNode(int data) {
+        left = right = nullptr; // Initialize left and right child pointers to null
+        value = data;           // Assign the given value to the node
+    }
+};
+
+// Function to perform an iterative inorder traversal of a binary tree
+void Inorder(TreeNode* root) {
+    stack<TreeNode*> st;         // Stack to store nodes during traversal
+    TreeNode* current = root;    // Start traversal from the root node
+
+    // Continue traversal until all nodes are processed
+    while (!st.empty() || current != nullptr) {
+        // Traverse to the leftmost node of the current subtree
+        while (current != nullptr) {
+            st.push(current);    // Push the current node onto the stack
+            current = current->left; // Move to the left child
+        }
+
+        // Retrieve and remove the top node from the stack
+        current = st.top();
+        st.pop();
+
+        // Print the value of the current node
+        cout << current->value << " ";
+
+        // Move to the right child of the current node
+        current = current->right;
+    }
+}
+
+int main() {
+    // Constructing the binary tree
+    TreeNode *root = new TreeNode(1);       // Root node with value 1
+    root->left = new TreeNode(2);           // Left child of root with value 2
+    root->right = new TreeNode(3);          // Right child of root with value 3
+    root->left->left = new TreeNode(4);     // Left child of node 2 with value 4
+    root->left->right = new TreeNode(5);    // Right child of node 2 with value 5
+
+    // Perform iterative inorder traversal and print the node values
+    Inorder(root);
+
+    return 0; // Exit the program
+}

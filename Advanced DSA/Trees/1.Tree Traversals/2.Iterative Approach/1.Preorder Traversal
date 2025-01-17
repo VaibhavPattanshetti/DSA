@@ -1,0 +1,68 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <stack>
+using namespace std;
+
+// Definition of the TreeNode class to represent each node in a binary tree
+class TreeNode {
+    public:
+    TreeNode *left;  // Pointer to the left child
+    TreeNode *right; // Pointer to the right child
+    int value;       // Value stored in the node
+
+    // Constructor to initialize the TreeNode
+    TreeNode(int data) {
+        left = right = nullptr; // Set left and right child pointers to null
+        value = data;           // Assign the value to the node
+    }
+};
+
+// Function to perform an iterative preorder traversal of a binary tree
+void Preorder(TreeNode* root){
+    // If the tree is empty, return immediately
+    if(root == nullptr){
+        return;
+    }
+    
+    // Create a stack to store tree nodes for traversal
+    stack<TreeNode*> st;
+    
+    // Push the root node onto the stack
+    st.push(root);
+    
+    // Continue processing nodes until the stack is empty
+    while(!st.empty()){
+        // Retrieve the node on the top of the stack
+        TreeNode* current = st.top();
+        st.pop(); // Remove the node from the stack
+        
+        // Print the value of the current node
+        cout << current->value << " ";
+        
+        // Push the right child onto the stack (if it exists)
+        // The right child is pushed first so that the left child
+        // is processed before the right child (stack is LIFO).
+        if(current->right){
+            st.push(current->right);
+        }
+        
+        // Push the left child onto the stack (if it exists)
+        if(current->left){
+            st.push(current->left);
+        }
+    }
+}
+
+int main() {
+    // Constructing the binary tree
+    TreeNode *root = new TreeNode(1);           // Root node with value 1
+    root->left = new TreeNode(2);               // Left child of root with value 2
+    root->right = new TreeNode(3);              // Right child of root with value 3
+    root->left->left = new TreeNode(4);         // Left child of node 2 with value 4
+    root->left->right = new TreeNode(5);        // Right child of node 2 with value 5
+    
+    // Perform iterative preorder traversal of the tree and print the node values
+    Preorder(root);
+
+    return 0; // Exit the program
+}

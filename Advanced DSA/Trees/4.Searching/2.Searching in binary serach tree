@@ -1,1 +1,53 @@
+#include <iostream>
+#include <queue>
+using namespace std;
 
+class TreeNode {
+    public:
+    TreeNode *left, *right;
+    int value;
+
+    TreeNode(int data) {
+        left = right = nullptr;
+        value = data;
+    }
+};
+
+int findNode(TreeNode* root,int key){
+    TreeNode* current = root;
+    int level=0;
+    
+    while(current!=nullptr){
+        if(current->value == key){
+            return level;
+        }
+        
+        if(key < current->value){
+            current = current->left;
+        }else{
+            current = current->right;
+        }
+        level++;
+    }
+    
+    return -1;
+}
+
+int main() {
+    TreeNode *root = new TreeNode(10);
+    root->left = new TreeNode(5);
+    root->right = new TreeNode(17);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(7);
+
+   
+   int level = findNode(root,9);
+   
+   if(level!=-1){
+       cout<<"Node found at level : "<<level;
+   }else{
+       cout<<"Node not found!!";
+   }
+
+    return 0;
+}

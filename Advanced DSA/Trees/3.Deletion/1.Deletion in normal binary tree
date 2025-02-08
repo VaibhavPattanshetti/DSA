@@ -1,0 +1,122 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+
+class TreeNode {
+    public:
+    TreeNode *left, *right;
+    int value;
+
+    TreeNode(int data) {
+        left = right = nullptr;
+        value = data;
+    }
+};
+
+void deleteDeepest(TreeNode* &root,TreeNode* key){
+    queue<TreeNode*> q;
+    q.push(root);
+    TreeNode* temp;
+    
+    while(!q.empty()){
+        temp = q.front();
+        q.pop();
+        
+        if(temp->left){
+            if(temp->left == key){
+                temp->left = nullptr;
+                delete key;
+                return;
+            }else{
+                q.push(temp->left);
+            }
+        }
+        if(temp->right){
+            if(temp->right == key){
+                temp->right = nullptr;
+                delete key;
+                return;
+            }else{
+                q.push(temp->right);
+            }
+        }
+    }
+}
+
+TreeNode* DeleteNode(TreeNode* root,int key){
+    
+    if(root==nullptr){
+        return nullptr;
+    }
+    if(!root->left && !root->right){
+        if(root->value==key){
+            delete root;
+            return nullptr;
+        }else{
+            return root;
+        }
+    }
+    
+    queue<TreeNode*> q;
+    q.push(root);
+    TreeNode* temp;TreeNode* keyNode = nullptr;
+    
+    while(!q.empty()){
+        temp = q.front();
+        q.pop();
+        
+        if(temp->value == key){
+            keyNode = temp;
+        }
+        
+        if(temp->left){
+            q.push(temp->left);
+        }
+        if(temp->right){
+            q.push(temp->right);
+        }
+    }
+    
+    if(keyNode){
+        keyNode->value = temp->value;
+        deleteDeepest(root,temp);
+    }
+    
+    return root;
+}
+
+void levelOrderTraversal(TreeNode* root) {
+    if (root == nullptr) {
+        cout << "Tree is empty!!\n";
+        return;
+    }
+
+    queue<TreeNode*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        TreeNode* current = q.front();
+        q.pop();
+
+        cout << current->value << " ";
+
+        if (current->left) q.push(current->left);
+        if (current->right) q.push(current->right);
+    }
+    cout << endl;
+}
+
+int main() {
+    TreeNode *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+
+   
+   root = DeleteNode(root,6);
+   
+   levelOrderTraversal(root);
+
+    return 0;
+}

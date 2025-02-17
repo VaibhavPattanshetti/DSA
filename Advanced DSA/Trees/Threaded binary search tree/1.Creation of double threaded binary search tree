@@ -1,0 +1,108 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class TreeNode{
+    public:
+    int value;
+    TreeNode *left,*right;
+    bool leftThread,rightThread;
+    
+    TreeNode(int n){
+        value = n;
+        left = right = nullptr;
+        leftThread = rightThread = true;
+    }
+};
+
+TreeNode* insert(TreeNode *root,int key){
+    
+    if(root==nullptr){
+        return new TreeNode(key);
+    }
+    
+    TreeNode *current = root;
+    TreeNode *parent = nullptr;
+    
+    while(current != nullptr){
+        if(current->value == key){
+            cout<<"Duplicate keys not allowed!"<<endl;
+            return root;
+        }
+        
+        parent = current;
+        
+        if(key < current->value){
+            if(!current->leftThread){
+                current = current->left;
+            }else{
+                break;
+            }
+        }else{
+            if(!current->rightThread){
+                current = current->right;
+            }else{
+                break;
+            }
+        }
+    }
+    
+    TreeNode *temp = new TreeNode(key);
+    if(key < parent->value){
+        temp->left = parent->left;
+        temp->right = parent;
+        parent->left = temp;
+        parent->leftThread = false;
+    }else{
+        temp->right = parent->right;
+        temp->left = parent;
+        parent->right = temp;
+        parent->rightThread = false;
+    }
+    
+    return root;
+    
+}
+
+void inorder(TreeNode* root) {
+    if (root == nullptr) return;
+
+    TreeNode* ptr = root;
+    
+    // Move to the leftmost node
+    while (!ptr->leftThread)
+        ptr = ptr->left;
+
+    // Traverse the tree
+    while (ptr != nullptr) {
+        cout << ptr->value << " ";
+
+        // If right thread exists, move to inorder successor
+        if (ptr->rightThread)
+            ptr = ptr->right;
+        else { // Otherwise move to leftmost node in right subtree
+            ptr = ptr->right;
+            while (ptr != nullptr && !ptr->leftThread)
+                ptr = ptr->left;
+        }
+    }
+}
+    
+int main() {
+    TreeNode* root = nullptr;
+    root = insert(root, 6);
+    root = insert(root, 3);
+    root = insert(root, 1);
+    root = insert(root, 5);
+    root = insert(root, 8);
+    root = insert(root, 7);
+    root = insert(root, 11);
+    root = insert(root, 9);
+    root = insert(root, 13);
+    
+    cout << "Inorder Traversal of Threaded BST: ";
+    inorder(root);
+    cout << endl;
+
+    return 0;
+}

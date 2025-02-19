@@ -1,0 +1,31 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class TreeNode{
+    public:
+    TreeNode *left,*right;
+    int value;
+    TreeNode(int n){
+        value = n;
+        left = right = nullptr;
+    }
+};
+
+int Height(TreeNode *root){
+    if(root==nullptr){
+        return -1;
+    }
+    return 1+max(Height(root->left),Height(root->right));
+}
+int main() {
+    TreeNode *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    
+    cout<<Height(root);
+
+    return 0;
+}

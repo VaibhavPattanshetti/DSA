@@ -1,0 +1,142 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+class MaxHeap{
+    vector<int> heap;
+    
+    void heapifyUp(int index){
+        int parent = (index-1)/2;
+        while(index > 0 && heap[parent]<heap[index]){
+            swap(heap[parent],heap[index]);
+            index = parent;
+            parent = (index-1)/2;
+        }
+    }
+    
+    void heapifyDown(int index){
+        int size = heap.size();
+        
+        while(true){
+            int left = 2*index+1;
+            int right = 2*index+2;
+            int largest = index;
+        
+            if(left<size && heap[left]>heap[largest]){
+                largest = left;
+            }
+            if(right<size && heap[right]>heap[largest]){
+                largest = right;
+            }
+            if(largest==index){
+                break;
+            }else{
+                swap(heap[largest],heap[index]);
+                index = largest;
+            }
+        }
+    }
+    
+    public:
+    
+    void Insert(int n){
+        heap.push_back(n);
+        heapifyUp(heap.size()-1);
+    }
+    
+    void Delete(int value){
+        if(heap.empty()){
+            cout<<"Heap is Empty!!"<<endl;
+            return;
+        }
+        int index = -1;
+        for(int i=0;i<heap.size();i++){
+            if(heap[i]==value){
+                index = i;
+                break;
+            }
+        }
+        
+        if(index==-1){
+            cout<<"Element not found!!"<<endl;
+            return;
+        }
+        
+        heap[index] = heap.back();
+        heap.pop_back();
+        
+        if(index < heap.size()){ //if element is at last position
+            if(index>0 && heap[index]>heap[(index-1)/2]){
+                heapifyUp(index);
+            }else{
+                heapifyDown(index);
+            }
+        }
+    }
+    
+    void DeleteMax(){
+        if(heap.empty()){
+            cout<<"Heap is Empty!!"<<endl;
+            return;
+        }
+        heap[0] = heap.back();
+        heap.pop_back();
+        if(heap.empty()){
+            return;
+        }else{
+            heapifyDown(0);
+        }
+    }
+    
+    void DisplayHeap() {
+        if (heap.empty()) {
+            cout << "Heap is Empty!!" << endl;
+            return;
+        }
+        cout << "Heap Elements: ";
+        for (int val : heap) {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    MaxHeap obj;
+    int Choice, value;
+
+    cout << "1. Insert Element.\n2. Delete Element.\n3. Delete Max.\n4. Display Heap.\n5. Exit.\n";
+
+    bool Check = true;
+    while (Check) {
+        cout << "\nEnter Choice: ";
+        cin >> Choice;
+
+        switch (Choice) {
+            case 1:
+                cout << "Enter Value to Insert: ";
+                cin >> value;
+                obj.Insert(value);
+                break;
+            case 2:
+                cout << "Enter Value to Delete: ";
+                cin >> value;
+                obj.Delete(value);
+                break;
+            case 3:
+                obj.DeleteMax();
+                break;
+            case 4:
+                obj.DisplayHeap();
+                break;
+            case 5:
+                Check = false;
+                break;
+            default:
+                cout << "Enter Valid Option..." << endl;
+                break;
+        }
+    }
+
+    cout << "\nExiting....";
+    return 0;
+}

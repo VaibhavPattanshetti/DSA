@@ -1,14 +1,15 @@
 // Online C++ compiler to run C++ program online
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class AVLTree{
     public:
-    int value,hight;
+    int value,height;
     AVLTree *left,*right;
     AVLTree(int n){
         value = n;
-        hight = 1;
+        height = 1;
         left = right = nullptr;
     }
     
@@ -19,7 +20,34 @@ int getHeight(AVLTree *node){
 }
 
 int getBalanceFactor(AVLTree *node){
-    return (node==nullpte) ? 0 : (getHeight(node->left)-getHeight(node->right));
+    return (node==nullptr) ? 0 : (getHeight(node->left)-getHeight(node->right));
+}
+
+AVLTree* rightRotation(AVLTree *y){
+    AVLTree *x = y->left;
+    AVLTree *temp = x->right;
+    
+    x->right = y;
+    y->left = temp;
+    
+    y->height = 1 + max(getHeight(y->left),getHeight(y->right));
+    x->height = 1 + max(getHeight(x->left),getHeight(x->right));
+    
+    return x;
+}
+
+AVLTree* leftRotation(AVLTree *y){
+    AVLTree *x = y->right;
+    AVLTree *temp = x->left;
+    
+    x->left = y;
+    y->right = temp;
+    
+    y->height = 1 + max(getHeight(y->left),getHeight(y->right));
+    x->height = 1 + max(getHeight(x->left),getHeight(x->right));
+    
+    return x;
+    
 }
 
 AVLTree* insert(AVLTree *root,int key){
@@ -35,7 +63,7 @@ AVLTree* insert(AVLTree *root,int key){
         return root;
     }
     
-    root->height = 1 + max(getheight(root->left),getHeight(root->right));
+    root->height = 1 + max(getHeight(root->left),getHeight(root->right));
     
     int balance = getBalanceFactor(root);
     
@@ -57,9 +85,57 @@ AVLTree* insert(AVLTree *root,int key){
     return root;
 } 
 
-int main() {
-    // Write C++ code here
-    std::cout << "Try programiz.pro";
+void levelOrderTraversal(AVLTree* root) {
+    if (root == nullptr) {
+        cout << "Tree is empty!!\n";
+        return;
+    }
 
-    return 0;
+    queue<AVLTree*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        AVLTree* current = q.front();
+        q.pop();
+
+        cout << current->value << " ";
+
+        if (current->left) q.push(current->left);
+        if (current->right) q.push(current->right);
+    }
+    cout << endl;
+}
+
+int main() {
+    AVLTree* root = nullptr;
+    int choice, value;
+
+    cout << "Menu:\n";
+    cout << "1. Insert value into the AVL tree\n";
+    cout << "2. Display level-order traversal\n";
+    cout << "3. Exit\n";
+    
+    while (true) {
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter value to insert: ";
+                cin >> value;
+                root = insert(root, value);
+                break;
+            case 2:
+                cout << "Level-order traversal: ";
+                levelOrderTraversal(root);
+                break;
+            case 3:
+                cout << "Exiting...\n";
+                return 0;
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    }
+
 }

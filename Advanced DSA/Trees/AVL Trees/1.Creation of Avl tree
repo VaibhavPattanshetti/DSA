@@ -1,0 +1,65 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class AVLTree{
+    public:
+    int value,hight;
+    AVLTree *left,*right;
+    AVLTree(int n){
+        value = n;
+        hight = 1;
+        left = right = nullptr;
+    }
+    
+};
+
+int getHeight(AVLTree *node){
+    return (node==nullptr) ? 0 : node->height;
+}
+
+int getBalanceFactor(AVLTree *node){
+    return (node==nullpte) ? 0 : (getHeight(node->left)-getHeight(node->right));
+}
+
+AVLTree* insert(AVLTree *root,int key){
+    if(root==nullptr){
+        return new AVLTree(key);
+    }
+    
+    if(key < root->value){
+        root->left = insert(root->left,key);
+    }else if(key > root->value){
+        root->right = insert(root->right,key);
+    }else{
+        return root;
+    }
+    
+    root->height = 1 + max(getheight(root->left),getHeight(root->right));
+    
+    int balance = getBalanceFactor(root);
+    
+    if(balance > 1 && key<root->left->value){
+        return rightRotation(root);
+    }
+    if(balance < -1 && key>root->right->value){
+        return leftRotation(root);
+    }
+    if(balance > 1 && key>root->left->value){
+        root->left = leftRotation(root->left);
+        return rightRotation(root);
+    }
+    if(balance < -1 && key<root->right->value){
+        root->right = rightRotation(root->right);
+        return leftRotation(root);
+    }
+    
+    return root;
+} 
+
+int main() {
+    // Write C++ code here
+    std::cout << "Try programiz.pro";
+
+    return 0;
+}

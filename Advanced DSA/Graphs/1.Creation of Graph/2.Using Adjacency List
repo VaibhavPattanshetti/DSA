@@ -1,1 +1,136 @@
-abc
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void print1(vector<vector<int>> adjList) {
+    for (int i = 0; i < adjList.size(); i++) {
+        cout << i << " -> ";
+        for (int v : adjList[i]) {
+            cout << v << " ";
+        }
+        cout << endl;
+    }
+}
+
+void print2(vector<vector<pair<int,int>>> adjList) {
+    for (int i = 0; i < adjList.size(); i++) {
+        cout << i << " -> ";
+        for (auto v : adjList[i]) {
+            cout <<"("<<v.first<<","<<v.second<<")"<<" ";
+        }
+        cout << endl;
+    }
+}
+
+
+void UndirectedUnweighted(int E,vector<vector<int>> &adjList,int n){
+    int u,v;
+    for(int i=0;i<E;i++){
+        cout << "Enter the edges (u, v) where u and v are vertex indices starting from 0 : ";
+        cin>>u>>v;
+        if(u < n && v < n){
+            adjList[u].push_back(v);
+            adjList[v].push_back(u);
+        }else{
+            cout<<"Enter valid vertex indices!!"<<endl;
+            --i;
+        }
+    }
+}
+
+void DirectedUnweighted(int E,vector<vector<int>> &adjList,int n){
+    int u,v;
+    for(int i=0;i<E;i++){
+        cout << "Enter the edges (u, v) where u and v are vertex indices starting from 0 : ";
+        cin>>u>>v;
+        if(u < n && v < n){
+            adjList[u].push_back(v);
+        }else{
+            cout<<"Enter Valid vertex indices!!"<<endl;
+            --i;
+        }
+    }
+}
+
+void UndirectedWeighted(int E,vector<vector<pair<int,int>>> &adjList2,int n){
+    int u,v,w;
+    for(int i=0;i<E;i++){
+         cout << "Enter the edges (u, v, w) where u and v are vertex indices and w is the weight of the edge:";
+        cin>>u>>v>>w;
+        if(u < n && v < n){
+            adjList2[u].push_back({v,w});
+            adjList2[v].push_back({u,w});
+        }else{
+            cout<<"Enter Valid vertex indices!!"<<endl;
+            --i;
+        }
+    }
+}
+
+void DirectedWeighted(int E,vector<vector<pair<int,int>>> &adjList2,int n){
+    int u,v,w;
+    for(int i=0;i<E;i++){
+         cout << "Enter the edges (u, v, w) where u and v are vertex indices and w is the weight of the edge:";
+        cin>>u>>v>>w;
+        if(u < n && v < n){
+            adjList2[u].push_back({v,w});
+        }else{
+            cout<<"Enter Valid vertex indices!!"<<endl;
+            --i;
+        }
+    }
+}
+
+int main() {
+    
+    int V,E;
+    
+    vector<vector<int>> adjList; 
+    vector<vector<pair<int,int>>> adjList2;
+    
+    cout<<"1.Undirected Unweighted\n2.Directed Unweighted\n3.Undirected Weighted\n4.Directed Weighted\n5.Print Graph\n6.Exit\n";
+    
+    int choice,graphType;
+    while(true){
+        cout<<"Enter Choice : ";
+        cin>>choice;
+        if(choice > 0 && choice < 5){
+        cout<<"Enter Vertices :";
+        cin>>V;
+        cout<<"Enter Edges :";
+        cin>>E;
+        adjList.assign(V,vector<int>());
+        adjList2.assign(V,vector<pair<int, int>>());
+        graphType = (choice <= 2) ? 1 : 2;
+       }
+       switch(choice){
+           case 1:
+                UndirectedUnweighted(E,adjList,V);
+                break;
+           case 2:
+                DirectedUnweighted(E,adjList,V);
+                break;
+           case 3:
+                UndirectedWeighted(E,adjList2,V);
+                break;
+           case 4:
+                DirectedWeighted(E,adjList2,V);
+                break;
+           case 5:
+                 if (graphType == 1) {
+                    print1(adjList);
+                } else if (graphType == 2) {
+                    print2(adjList2);
+                } else {
+                    cout << "No graph to print!!" << endl;
+                }
+                break;
+           case 6:
+                cout<<"Exiting...";
+                return 0;
+           default:
+                cout<<"Enter Valid Option!!"<<endl;
+       }
+    }
+
+}

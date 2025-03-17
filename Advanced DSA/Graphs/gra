@@ -73,12 +73,8 @@ void DirectedWeighted(int E,vector<vector<int>> &matrix){
 int main() {
     
     int V,E;
-    cout<<"Enter Vertices :";
-    cin>>V;
-    cout<<"Enter Edges :";
-    cin>>E;
     
-    vector<vector<int>> adjMatrix(V,vector(V,0));
+    vector<vector<int>> adjMatrix;
     
     cout<<"1.Undirected Unweighted\n2.Directed Unweighted\n3.Undirected Weighted\n4.Directed Weighted\n5.Print Graph\n6.Exit\n";
     
@@ -86,6 +82,13 @@ int main() {
     while(true){
        cout<<"Enter Choice : ";
        cin>>choice;
+       if(choice > 0 && choice < 5){
+        cout<<"Enter Vertices :";
+        cin>>V;
+        cout<<"Enter Edges :";
+        cin>>E;
+        adjMatrix.assign(V, vector<int>(V, 0));
+       }
        switch(choice){
            case 1:
                 UndirectedUnweighted(E,adjMatrix);

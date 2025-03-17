@@ -1,1 +1,115 @@
-abc
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void PrintMatrix(vector<vector<int>> matrix){
+    for(auto row:matrix){
+        for(int e:row){
+            cout<<e<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+void UndirectedUnweighted(int E,vector<vector<int>> &matrix){
+    int u,v;
+    for(int i=0;i<E;i++){
+        cout << "Enter the edges (u, v) where u and v are vertex indices starting from 0 : ";
+        cin>>u>>v;
+        if(u < matrix.size() && v < matrix.size()){
+            matrix[u][v] = 1;
+            matrix[v][u] = 1;
+        }else{
+            cout<<"Enter valid vertex indices!!"<<endl;
+            i = i-1;
+        }
+    }
+}
+
+void DirectedUnweighted(int E,vector<vector<int>> &matrix){
+    int u,v;
+    for(int i=0;i<E;i++){
+        cout << "Enter the edges (u, v) where u and v are vertex indices starting from 0 : ";
+        cin>>u>>v;
+        if(u < matrix.size() && v < matrix.size()){
+            matrix[u][v] = 1;
+        }else{
+            cout<<"Enter Valid vertex indices!!"<<endl;
+            i = i-1;
+        }
+    }
+}
+
+void UndirectedWeighted(int E,vector<vector<int>> &matrix){
+    int u,v,w;
+    for(int i=0;i<E;i++){
+         cout << "Enter the edges (u, v, w) where u and v are vertex indices and w is the weight of the edge:";
+        cin>>u>>v>>w;
+        if(u < matrix.size() && v < matrix.size()){
+            matrix[u][v] = w;
+            matrix[v][u] = w;
+        }else{
+            cout<<"Enter Valid vertex indices!!"<<endl;
+            i = i-1;
+        }
+    }
+}
+
+void DirectedWeighted(int E,vector<vector<int>> &matrix){
+    int u,v,w;
+    for(int i=0;i<E;i++){
+         cout << "Enter the edges (u, v, w) where u and v are vertex indices and w is the weight of the edge:";
+        cin>>u>>v>>w;
+        if(u < matrix.size() && v < matrix.size()){
+            matrix[u][v] = w;
+        }else{
+            cout<<"Enter Valid vertex indices!!"<<endl;
+            i = i-1;
+        }
+    }
+}
+
+int main() {
+    
+    int V,E;
+    
+    vector<vector<int>> adjMatrix;
+    
+    cout<<"1.Undirected Unweighted\n2.Directed Unweighted\n3.Undirected Weighted\n4.Directed Weighted\n5.Print Graph\n6.Exit\n";
+    
+    int choice;
+    while(true){
+       cout<<"Enter Choice : ";
+       cin>>choice;
+       if(choice > 0 && choice < 5){
+        cout<<"Enter Vertices :";
+        cin>>V;
+        cout<<"Enter Edges :";
+        cin>>E;
+        adjMatrix.assign(V, vector<int>(V, 0));
+       }
+       switch(choice){
+           case 1:
+                UndirectedUnweighted(E,adjMatrix);
+                break;
+           case 2:
+                DirectedUnweighted(E,adjMatrix);
+                break;
+           case 3:
+                UndirectedWeighted(E,adjMatrix);
+                break;
+           case 4:
+                DirectedWeighted(E,adjMatrix);
+                break;
+           case 5:
+                PrintMatrix(adjMatrix);
+                break;
+           case 6:
+                cout<<"Exiting...";
+                return 0;
+           default:
+                cout<<"Enter Valid Option!!"<<endl;
+       }
+    }
+
+}

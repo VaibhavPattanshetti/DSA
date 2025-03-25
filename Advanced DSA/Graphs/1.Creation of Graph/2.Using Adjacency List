@@ -110,14 +110,12 @@ int main() {
         cout<<"Enter Choice : ";
         cin>>choice;
         
-        if(choice > 0 && choice < 5){
         cout<<"Enter Vertices :";
         cin>>V;
         cout<<"Enter Edges :";
         cin>>E;
         adjList.assign(V,vector<int>());
         adjList2.assign(V,vector<pair<int, int>>());
-      }
        
        switch(choice){
            case 1:

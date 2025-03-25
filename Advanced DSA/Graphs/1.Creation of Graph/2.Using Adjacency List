@@ -2,27 +2,6 @@
 #include <vector>
 using namespace std;
 
-void print1(vector<vector<int>> adjList) {
-    for (int i = 0; i < adjList.size(); i++) {
-        cout << i << " -> ";
-        for (int v : adjList[i]) {
-            cout << v << " ";
-        }
-        cout << endl;
-    }
-}
-
-void print2(vector<vector<pair<int,int>>> adjList) {
-    for (int i = 0; i < adjList.size(); i++) {
-        cout << i << " -> ";
-        for (auto v : adjList[i]) {
-            cout <<"("<<v.first<<","<<v.second<<")"<<" ";
-        }
-        cout << endl;
-    }
-}
-
-
 void UndirectedUnweighted(int E,vector<vector<int>> &adjList,int n){
     int u,v;
     for(int i=0;i<E;i++){
@@ -35,6 +14,15 @@ void UndirectedUnweighted(int E,vector<vector<int>> &adjList,int n){
             cout<<"Enter valid vertex indices!!"<<endl;
             --i;
         }
+    }
+    
+    cout<<"Undirected Unweighted Graph : "<<endl;
+    for(int i=0;i<adjList.size();i++){
+        cout<<i<<" -> ";
+        for(int v : adjList[i]){
+            cout<<v<<" ";
+        }
+        cout<<endl;
     }
 }
 
@@ -49,6 +37,15 @@ void DirectedUnweighted(int E,vector<vector<int>> &adjList,int n){
             cout<<"Enter Valid vertex indices!!"<<endl;
             --i;
         }
+    }
+    
+    cout<<"Directed Unweighted Graph : "<<endl;
+    for(int i=0;i<adjList.size();i++){
+        cout<<i<<" -> ";
+        for(int v : adjList[i]){
+            cout<<v<<" ";
+        }
+        cout<<endl;
     }
 }
 
@@ -65,6 +62,15 @@ void UndirectedWeighted(int E,vector<vector<pair<int,int>>> &adjList2,int n){
             --i;
         }
     }
+    
+    cout<<"Undirected Weighted Graph : "<<endl;
+    for(int i=0;i<adjList2.size();i++){
+        cout<<i<<" -> ";
+        for(auto v : adjList2[i]){
+            cout<<"("<<v.first<<","<<v.second<<")"<<endl;
+        }
+        cout<<endl;
+    }
 }
 
 void DirectedWeighted(int E,vector<vector<pair<int,int>>> &adjList2,int n){
@@ -79,6 +85,15 @@ void DirectedWeighted(int E,vector<vector<pair<int,int>>> &adjList2,int n){
             --i;
         }
     }
+    
+    cout<<"Directed Weighted Graph : "<<endl;
+    for(int i=0;i<adjList2.size();i++){
+        cout<<i<<" -> ";
+        for(auto v : adjList2[i]){
+            cout<<"("<<v.first<<","<<v.second<<")"<<endl;
+        }
+        cout<<endl;
+    }
 }
 
 int main() {
@@ -88,12 +103,13 @@ int main() {
     vector<vector<int>> adjList; 
     vector<vector<pair<int,int>>> adjList2;
     
-    cout<<"1.Undirected Unweighted\n2.Directed Unweighted\n3.Undirected Weighted\n4.Directed Weighted\n5.Print Graph\n6.Exit\n";
+    cout<<"1.Undirected Unweighted\n2.Directed Unweighted\n3.Undirected Weighted\n4.Directed Weighted\n5.Exit\n";
     
-    int choice,graphType;
+    int choice;
     while(true){
         cout<<"Enter Choice : ";
         cin>>choice;
+        
         if(choice > 0 && choice < 5){
         cout<<"Enter Vertices :";
         cin>>V;
@@ -101,8 +117,8 @@ int main() {
         cin>>E;
         adjList.assign(V,vector<int>());
         adjList2.assign(V,vector<pair<int, int>>());
-        graphType = (choice <= 2) ? 1 : 2;
-       }
+      }
+       
        switch(choice){
            case 1:
                 UndirectedUnweighted(E,adjList,V);
@@ -117,15 +133,6 @@ int main() {
                 DirectedWeighted(E,adjList2,V);
                 break;
            case 5:
-                 if (graphType == 1) {
-                    print1(adjList);
-                } else if (graphType == 2) {
-                    print2(adjList2);
-                } else {
-                    cout << "No graph to print!!" << endl;
-                }
-                break;
-           case 6:
                 cout<<"Exiting...";
                 return 0;
            default:

@@ -2,15 +2,6 @@
 #include <vector>
 using namespace std;
 
-void PrintMatrix(vector<vector<int>> matrix){
-    for(auto row:matrix){
-        for(int e:row){
-            cout<<e<<" ";
-        }
-        cout<<endl;
-    }
-}
-
 void UndirectedUnweighted(int E,vector<vector<int>> &matrix){
     int u,v;
     for(int i=0;i<E;i++){
@@ -23,6 +14,14 @@ void UndirectedUnweighted(int E,vector<vector<int>> &matrix){
             cout<<"Enter valid vertex indices!!"<<endl;
             i = i-1;
         }
+    }
+    
+    cout<<"Undirected Unweighted Graph : "<<endl;
+    for(auto row:matrix){
+        for(int i:row){
+            cout<<i<<" ";
+        }
+        cout<<endl;
     }
 }
 
@@ -37,6 +36,14 @@ void DirectedUnweighted(int E,vector<vector<int>> &matrix){
             cout<<"Enter Valid vertex indices!!"<<endl;
             i = i-1;
         }
+    }
+    
+    cout<<"Directed Unweighted Graph : "<<endl;
+    for(auto row:matrix){
+        for(int i:row){
+            cout<<i<<" ";
+        }
+        cout<<endl;
     }
 }
 
@@ -53,6 +60,14 @@ void UndirectedWeighted(int E,vector<vector<int>> &matrix){
             i = i-1;
         }
     }
+    
+    cout<<"Undirected Weighted Graph : "<<endl;
+    for(auto row:matrix){
+        for(int i:row){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+    }
 }
 
 void DirectedWeighted(int E,vector<vector<int>> &matrix){
@@ -67,6 +82,14 @@ void DirectedWeighted(int E,vector<vector<int>> &matrix){
             i = i-1;
         }
     }
+    
+    cout<<"Directed Weighted Graph : "<<endl;
+    for(auto row:matrix){
+        for(int i:row){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+    }
 }
 
 int main() {
@@ -75,19 +98,19 @@ int main() {
     
     vector<vector<int>> adjMatrix;
     
-    cout<<"1.Undirected Unweighted\n2.Directed Unweighted\n3.Undirected Weighted\n4.Directed Weighted\n5.Print Graph\n6.Exit\n";
+    cout<<"1.Undirected Unweighted\n2.Directed Unweighted\n3.Undirected Weighted\n4.Directed Weighted\n5.Exit\n";
     
     int choice;
     while(true){
        cout<<"Enter Choice : ";
        cin>>choice;
-       if(choice > 0 && choice < 5){
-        cout<<"Enter Vertices :";
-        cin>>V;
-        cout<<"Enter Edges :";
-        cin>>E;
-        adjMatrix.assign(V, vector<int>(V, 0));
-       }
+       
+       cout<<"Enter Vertices :";
+       cin>>V;
+       cout<<"Enter Edges :";
+       cin>>E;
+       adjMatrix.assign(V, vector<int>(V, 0));
+       
        switch(choice){
            case 1:
                 UndirectedUnweighted(E,adjMatrix);
@@ -102,9 +125,6 @@ int main() {
                 DirectedWeighted(E,adjMatrix);
                 break;
            case 5:
-                PrintMatrix(adjMatrix);
-                break;
-           case 6:
                 cout<<"Exiting...";
                 return 0;
            default:

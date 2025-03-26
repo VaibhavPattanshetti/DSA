@@ -1,0 +1,68 @@
+#include<iostream>
+#include<vector>
+#include<queue>
+using namespace std;
+
+vector<int> BFS(vector<vector<int>> adjList,int V){
+    queue<int> q;
+    vector<bool> visited(V,0);
+    vector<int> ans;
+    
+    for(int i=0;i<V;i++){
+        if(!visited[i]){
+            q.push(i);
+            visited[i] = 1;
+    
+            while(!q.empty()){
+                int vertex = q.front();
+                q.pop();
+                ans.push_back(vertex);
+        
+                for(int i=0;i<adjList[vertex].size();i++){
+                    if(!visited[adjList[vertex][i]]){
+                        visited[adjList[vertex][i]] = 1;
+                        q.push(adjList[vertex][i]);
+                    }
+                }
+            }
+        }
+    }
+    
+    return ans;
+    
+}
+
+int main(){
+    int V,E;
+    cout<<"Enter number of vertices and edges : ";
+    cin>>V>>E;
+
+    vector<vector<int>> adjList(V,vector<int>());
+
+    int u,v;
+    for(int i=0;i<E;i++){
+        cout << "Enter the edges (u, v) where u and v are vertex indices starting from 0 : ";
+        cin>>u>>v;
+        adjList[u].push_back(v);
+        adjList[v].push_back(u);
+    }
+    
+    cout<<"Graph : "<<endl;
+    for(int i=0;i<adjList.size();i++){
+        cout<<i<<" -> ";
+        for(int j:adjList[i]){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+    
+    vector<int> ans = BFS(adjList,V);
+    
+    cout<<"BFS of above graph : ";
+    for(int i:ans){
+        cout<<i<<" ";
+    }
+    
+    return 0;
+
+}

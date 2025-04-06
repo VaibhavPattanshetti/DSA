@@ -105,11 +105,13 @@ int main() {
        cout<<"Enter Choice : ";
        cin>>choice;
        
-       cout<<"Enter Vertices :";
-       cin>>V;
-       cout<<"Enter Edges :";
-       cin>>E;
-       adjMatrix.assign(V, vector<int>(V, 0));
+       if(choice > 0 && choice < 5){
+        cout<<"Enter Vertices :";
+        cin>>V;
+        cout<<"Enter Edges :";
+        cin>>E;
+        adjMatrix.assign(V, vector<int>(V, 0));
+       }
        
        switch(choice){
            case 1:

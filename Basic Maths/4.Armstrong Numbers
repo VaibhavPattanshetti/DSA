@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+//Time Complexity = O(log n)
+void Armstrong(int n){
+    int temp = n;
+    int digits = (int)(log10(n)+1);
+    int sum=0;
+    
+    while(n>0){
+        int ld = n%10;
+        sum  += pow(ld,digits);
+        n = n/10;
+    }
+    
+    if(temp == sum) cout<<"True"<<endl;
+    else cout<<"False"<<endl;
+}
+
+
+int main() {
+    
+    int n;
+    cin>>n;
+    
+    Armstrong(n);
+
+    return 0;
+}

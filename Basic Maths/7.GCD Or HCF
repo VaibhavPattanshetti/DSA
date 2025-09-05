@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void GCD(int a,int b){
+    
+    //Euclidean Algorithm
+    while(a>0 && b>0){
+        if(a>b) a %= b;
+        else b %= a;
+    }
+    
+    if(a==0) cout<<b<<endl;
+    else cout<<a<<endl;
+    
+}
+
+
+int main() {
+    
+    int n1,n2;
+    cin>>n1>>n2;
+    
+    GCD(n1,n2);
+
+    return 0;
+}

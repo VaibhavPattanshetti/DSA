@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+/*
+int hash[26] = {0};//for only alphabets
+hash[s[i] - 'a']++; // if alphabets are lower case 
+hash[s[i] - 'A']++; // if alphabets are upper case 
+*/
+
+int main() {
+    
+    string s;
+    cin>>s;
+    
+    int hash[256] = {0}; //for all characters
+    
+    for(int i=0;i<s.size();i++){
+        hash[s[i]]++;
+    }
+    
+    int q;
+    cin>>q;
+    while(q--){
+        char c;
+        cin>>c;
+        
+        cout<<hash[c]<<endl;
+    }
+
+    return 0;
+}
+
+	

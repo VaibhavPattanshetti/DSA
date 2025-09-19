@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+void leftRotate(int arr[],int n,int d){
+    d = d % n;
+    int temp[d];
+    
+    for(int i=0;i<d;i++){   //T.C = O(d)
+        temp[i] = arr[i];
+    }
+    for(int i=d;i<n;i++){   //T.C = O(n-d)
+        arr[i-d] = arr[i];
+    }
+    for(int i=n-d;i<n;i++){     //T.C = O(d)
+        arr[i] = temp[i-(n-d)];
+    }
+    
+    //T.C = O(d) + O(n-d) + O(d) => O(n+d)
+    //S.C = O(d)
+}
+
+void reverse(int arr[],int st,int end){
+    while(st<end){
+        int temp = arr[st];
+        arr[st] = arr[end];
+        arr[end] = temp;
+        
+        st++;
+        end--;
+    }
+}
+
+void leftRotate(int arr[],int n,int d){
+    d = d % n;
+    
+    reverse(arr,0,d-1);     //T.C = O(d)
+    reverse(arr,d,n-1);   //T.C = O(n-d)
+    reverse (arr,0,n-1);    //T.C = O(n)
+    
+    //T.C = O(d) + O(n-d) + O(n) => O(2n)
+    //S.C = O(1)
+}
+
+int main() {
+    
+    int n;
+    cin>>n;
+    int arr[n];
+    
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    
+    int d;
+    cin>>d;
+    
+    leftRotate(arr,n,d);
+    
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+
+    return 0;
+}
